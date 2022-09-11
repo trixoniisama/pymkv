@@ -105,7 +105,7 @@ class MKVTrack:
 
     def __init__(self, file_path, track_id=0, track_name=None, language=None, language_ietf=None, default_track=False,
                  forced_track=False, flag_commentary=False, flag_hearing_impaired=False, flag_visual_impaired=False,
-                 flag_original=False, delay=0, mkvmerge_path='mkvmerge'):
+                 flag_original=False, delay=None, mkvmerge_path='mkvmerge'):
         # track info
         self._track_codec = None
         self._track_type = None
@@ -131,6 +131,7 @@ class MKVTrack:
         self.flag_visual_impaired = flag_visual_impaired
         self.flag_original = flag_original
         
+        self._delay = None
         self.delay = delay
 
         # exclusions
@@ -266,5 +267,5 @@ class MKVTrack:
         return self._delay
 
     @delay.setter
-    def delay(self, language):
+    def delay(self, delay):
         self._delay = delay
