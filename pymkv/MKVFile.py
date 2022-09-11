@@ -177,7 +177,7 @@ class MKVFile:
             if track.track_name is not None:
                 command.extend(['--track-name', str(track.track_id) + ':' + track.track_name])
             # audio/subs delay
-            if track.delay!=0:
+            if track.delay is not None:
                 command.extend(['--delay', str(track.track_id) + ':' + str(track.delay)])
             if track.language_ietf is not None:
                 command.extend(['--language', str(track.track_id) + ':' + track.language_ietf])
