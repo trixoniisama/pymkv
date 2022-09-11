@@ -262,4 +262,4 @@ class MKVTrack:
         return self._track_type
 
     def delay(self, delay):
-        self._delay = delay
+        self.delay = delay
