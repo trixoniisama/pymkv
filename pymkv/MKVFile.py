@@ -175,7 +175,7 @@ class MKVFile:
         for track in self.tracks:
             # flags
             if track.track_name is not None:
-                command.extend(['--track-name', str(track.track_id) + ':' + track.track_name])
+                command.extend(['--track-name', str(track.track_id) + ':' + '"' + track.track_name + '"'])
             # audio/subs delay
             if track.delay is not None:
                 command.extend(['--delay', str(track.track_id) + ':' + str(track.delay)])
