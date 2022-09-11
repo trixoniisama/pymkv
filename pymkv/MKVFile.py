@@ -97,7 +97,7 @@ class MKVFile:
             # add file title
             file_path = expanduser(file_path)
             info_json = json.loads(sp.check_output([self.mkvmerge_path, '-J', file_path]).decode())
-            if self.title=="keep" and 'title' in info_json['container']['properties']:
+            if self.title is not None and self.title=="keep" and 'title' in info_json['container']['properties']:
                 self.title = info_json['container']['properties']['title']
 
             # add tracks with info
