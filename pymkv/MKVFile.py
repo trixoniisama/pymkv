@@ -121,6 +121,8 @@ class MKVFile:
                     new_track.flag_visual_impaired = track['properties']['flag_visual_impaired']
                 if 'flag_original' in track['properties']:
                     new_track.flag_original = track['properties']['flag_original']
+                if 'delay' in track['properties']:
+                    new_track.delay = track['properties']['delay']
                 self.add_track(new_track)
 
         # split options
@@ -176,7 +178,7 @@ class MKVFile:
                 command.extend(['--track-name', str(track.track_id) + ':' + track.track_name])
             # audio/subs delay
             if track.delay!=0:
-                command.extend(['--delay', str(track.track_id) + ':' + self.delay])
+                command.extend(['--delay', str(track.track_id) + ':' + track.delay])
             if track.language_ietf is not None:
                 command.extend(['--language', str(track.track_id) + ':' + track.language_ietf])
             elif track.language is not None:
