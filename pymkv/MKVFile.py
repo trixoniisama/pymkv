@@ -164,9 +164,9 @@ class MKVFile:
         """
 
         output_path = expanduser(output_path)
-        command = [self.mkvmerge_path, '-o', output_path]
+        command = [self.mkvmerge_path, '-o', '"' + output_path + '"']
         if self.title is not None:
-            command.extend(['--title', self.title])
+            command.extend(['--title', '"' + self.title + '"'])
         # add tracks
         for track in self.tracks:
             # flags
@@ -228,7 +228,7 @@ class MKVFile:
                 command.append('--no-attachments')
 
             # add path
-            command.append(track.file_path)
+            command.append('"' + track.file_path + '"')
 
         # add attachments
         for attachment in self.attachments:
@@ -242,7 +242,7 @@ class MKVFile:
 
             # add path
             if not attachment.attach_once:
-                command.extend(['--attach-file', attachment.file_path])
+                command.extend(['--attach-file', '"' + attachment.file_path + '"'])
             else:
                 command.extend(['--attach-file-once', attachment.file_path])
 
